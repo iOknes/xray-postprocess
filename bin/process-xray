@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import os, sys, timeit
+import numpy as np
+from cv2 import imread, imwrite
+from argparse import ArgumentParser
+
+from imagediff import postprocess, postprocess_folder
+
+if __name__ == "__main__":
+    ap = ArgumentParser(description="Parser for running instapy from a CLI")
+
+    ap.add_argument("-r", "--ref", action='store', required=True, help="Path to reference image")
+    ap.add_argument("-f", "--file", action='store', required=True, help="Filename folder containing images")
+    ap.add_argument("-o", "--output", action='store', required=True, help="Destination file or folder for output")
+    ap.add_argument("-v", "--velocity", action='store_true', required=False, help="Calculate speed of falling sphere (not yet implemented)")
+
+    args = ap.parse_args()
+
+
+    if os.path.isdir(args.file):
+        postprocess_folder(args.ref, args.file, args.output)
+    else:
+        postprocess(args.ref, args.file, args.output)
