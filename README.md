@@ -1,4 +1,4 @@
-# Image Diff Post Process
+# X-ray Image Post Processing
 This is a small package written for use on the x-ray image data I get
 from the research in my master's degree. It's goal is to simplify the tracking
 of a falling sphere in a fluid.
